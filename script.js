@@ -170,7 +170,7 @@ form.addEventListener('submit', e => {
     
     fetch(scriptURL, { method: 'POST', body: new FormData(form)})
         .then(response => {
-            statusDiv.textContent = "Booking berhasil dikirim. Silakan cek status booking kamnu di beranda!";
+            statusDiv.textContent = "Booking berhasil dikirim. Silakan cek status booking kamu di beranda!";
             statusDiv.className = "text-center mt-3 fw-medium text-success";
             
             const curDate = tanggalInput.value;
