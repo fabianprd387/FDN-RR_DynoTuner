@@ -223,3 +223,17 @@ footer {
     text-align: center;
     border-top: 1px solid #333;
 }
+.btn-outline-green {
+    border: 2px solid #25D366;
+    color: #25D366;
+    font-weight: 600;
+    padding: 10px 25px;
+    border-radius: 8px;
+    background: transparent;
+    transition: 0.3s;
+}
+
+.btn-outline-green:hover {
+    background-color: #25D366;
+    color: #ffffff;
+}
