@@ -13,7 +13,7 @@ const wrapModel = document.getElementById('wrapModel');
 
 const scriptURL = 'https://script.google.com/macros/s/AKfycbzz5rP8PH-4T2EyFfDqwA6HZeJODQK3eDbUnziB2kMo7MeGd1RkyEscMCBti6J4o-Pluw/exec'; 
 
-const availableTimes = ["09:00", "10:00", "11:00", "13:00", "14:00", "15:00", "16:00"];
+const availableTimes = ["09:00", "10:00", "11:00", "13:00", "14:00", "15:00", "16:00", "17:00", "19:00"];
 let bookedData = {};
 let isDataReady = false;
 // Memblokir tanggal sebelum hari ini di kalender
