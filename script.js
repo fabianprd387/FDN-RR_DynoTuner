@@ -13,9 +13,13 @@ const wrapModel = document.getElementById('wrapModel');
 
 const scriptURL = 'https://script.google.com/macros/s/AKfycbzz5rP8PH-4T2EyFfDqwA6HZeJODQK3eDbUnziB2kMo7MeGd1RkyEscMCBti6J4o-Pluw/exec'; 
 
-const availableTimes = ["09:00", "10:00", "11:00", "13:00", "14:00", "15:00", "16:00", "19:00", "20:00"];
+const availableTimes = ["09:00", "10:00", "11:00", "13:00", "14:00", "15:00", "16:00"];
 let bookedData = {};
 let isDataReady = false;
+// Memblokir tanggal sebelum hari ini di kalender
+const today = new Date();
+const todayString = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+tanggalInput.setAttribute('min', todayString);
 
 fetch(scriptURL + '?v=' + new Date().getTime())
     .then(response => response.json())
@@ -115,6 +119,12 @@ function renderTimeSlots() {
     const bookedTimes = bookedData[selectedDate] || [];
     timeSlotsDiv.innerHTML = '';
 
+    // Ambil waktu saat ini untuk mencoret jam yang sudah lewat
+    const now = new Date();
+    const currentDateString = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+    const isToday = selectedDate === currentDateString;
+    const currentTimeString = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
+
     availableTimes.forEach(time => {
         const col = document.createElement('div');
         col.className = 'col-4 col-sm-3';
@@ -123,7 +133,14 @@ function renderTimeSlots() {
         btn.className = 'time-btn';
         btn.textContent = time;
 
-        if (bookedTimes.includes(time)) {
+        // Cek apakah jam ini sudah kelewat (khusus untuk hari ini)
+        let isPastTime = false;
+        if (isToday && time < currentTimeString) {
+            isPastTime = true;
+        }
+
+        // Jam dicoret (booked) jika sudah ada yang pesan ATAU jika jam sudah lewat
+        if (bookedTimes.includes(time) || isPastTime) {
             btn.classList.add('booked');
         } else {
             btn.addEventListener('click', () => {
@@ -153,7 +170,7 @@ form.addEventListener('submit', e => {
     
     fetch(scriptURL, { method: 'POST', body: new FormData(form)})
         .then(response => {
-            statusDiv.textContent = "Booking berhasil dikirim!";
+            statusDiv.textContent = "Booking berhasil dikirim. Silakan cek status booking kamnu di beranda!";
             statusDiv.className = "text-center mt-3 fw-medium text-success";
             
             const curDate = tanggalInput.value;
