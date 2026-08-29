@@ -1,85 +1,132 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Booking Servis - FDN Performance Tuner</title>
+    <title>FDN Performance Tuner</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=3">
+    <link rel="stylesheet" href="style.css?v=6">
 </head>
-<body class="bg-light text-dark">
-    <div class="container d-flex justify-content-center align-items-center min-vh-100 py-5">
-        <div class="card bg-white border-0 shadow w-100" style="max-width: 500px;">
-            <div class="card-body p-4 p-md-5">
-                <div class="text-center mb-4">
-                    <h2 class="text-dark fw-bold mb-1">RR X FDN Dyno</h2>
-                    <p class="text-secondary">Pesan jadwal servismu!</p>
-                </div>
-                
-                <form id="bookingForm">
-                    <div class="mb-3">
-                        <label for="nama" class="form-label text-dark fw-medium">Nama Lengkap</label>
-                        <input type="text" class="form-control focus-dark" id="nama" name="nama" required>
-                    </div>
-                    
-                    <div class="mb-3">
-                        <label for="whatsapp" class="form-label text-dark fw-medium">Nomor WhatsApp</label>
-                        <input type="tel" class="form-control focus-dark" id="whatsapp" name="whatsapp" required>
-                    </div>
 
-                    <div class="mb-3">
-                        <label for="brand" class="form-label text-dark fw-medium">Brand Motor</label>
-                        <select class="form-select focus-dark" id="brand" name="brand" required>
-                            <option value="" disabled selected>Pilih brand...</option>
-                            <option value="Honda">Honda</option>
-                            <option value="Yamaha">Yamaha</option>
-                            <option value="Suzuki">Suzuki</option>
-                            <option value="Kawasaki">Kawasaki</option>
-                        </select>
-                    </div>
+<body>
 
-                    <div class="mb-3 d-none" id="wrapTipe">
-                        <label for="tipe" class="form-label text-dark fw-medium">Tipe Motor</label>
-                        <select class="form-select focus-dark" id="tipe" name="tipe" required>
-                            <option value="" disabled selected>Pilih tipe...</option>
-                        </select>
-                    </div>
-
-                    <div class="mb-3 d-none" id="wrapModel">
-                        <label for="model" class="form-label text-dark fw-medium">Nama Motor</label>
-                        <select class="form-select focus-dark" id="model" name="model" required>
-                            <option value="" disabled selected>Pilih motor...</option>
-                        </select>
-                    </div>
-                    
-                    <div class="mb-3">
-                        <label for="layanan" class="form-label text-dark fw-medium">Pilih Layanan</label>
-                        <select class="form-select focus-dark" id="layanan" name="layanan" required>
-                            <option value="" disabled selected>Pilih layanan...</option>
-                            <option value="Servis Harian">Servis Harian</option>
-                            <option value="Modifikasi / Remap">Modifikasi / Remap</option>
-                            <option value="Bongkar Total">Bongkar Total</option>
-                            <option value="Cek Kerusakan">Kerusakan belum diketahui</option>
-                        </select>
-                    </div>
-                    
-                    <div class="mb-3">
-                        <label for="tanggal" class="form-label text-dark fw-medium">Tanggal</label>
-                        <input type="date" class="form-control focus-dark" id="tanggal" name="tanggal" required onclick="this.showPicker()">
-                    </div>
-                    
-                    <div class="mb-4">
-                        <label class="form-label text-dark fw-medium">Pilih Jam</label>
-                        <div id="timeSlots" class="row g-2"></div>
-                        <input type="hidden" name="jam" id="jam" required>
-                    </div>
-                    
-                    <button type="submit" id="btnSubmit" class="btn btn-dark w-100 fw-bold py-2" disabled>Kirim Booking</button>
-                    <div id="status" class="text-center mt-3 fw-medium"></div>
-                </form>
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">FDN TUNER - RR Racing</a>
+            <button class="navbar-toggler navbar-dark" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav align-items-center">
+                    <li class="nav-item"><a class="nav-link px-3" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="#katalog">Katalog</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="#kontak">Hubungi Kami</a></li>
+                    <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
+                        <a href="booking.html" class="btn btn-red btn-sm px-4 py-2">Booking Jadwal</a>
+                    </li>
+                </ul>
             </div>
         </div>
-    </div>
-    <script src="script.js"></script>
+    </nav>
+
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <h1 class="hero-title">Unlock Your <span>True Performance</span></h1>
+                    <p class="lead text-secondary mb-4">Bengkel spesialis modifikasi, remap, dan perawatan mesin untuk
+                        hasil maksimal. Kami menangani motor harian hingga spek balap.</p>
+                    <a href="booking.html" class="btn btn-red btn-lg me-2 mb-2">Booking Servis Sekarang</a>
+                    <a href="https://docs.google.com/spreadsheets/d/1wzDSHVoSyX6si_rdbvUReS2nAfoQpy8aKsMIQ1G_IIo/edit?usp=sharing"
+                        target="_blank" class="btn btn-outline-red btn-lg mb-2">Cek Pesanan</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="katalog" class="catalog-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Katalog Layanan</h2>
+                <p class="text-secondary">Pilih layanan sesuai kebutuhan mesin Anda.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card card-katalog text-center">
+                        <div class="card-body">
+                            <h3 class="fw-bold mb-3">Servis Harian</h3>
+                            <p class="text-secondary mb-4">Perawatan rutin, ganti oli, bersihkan injektor/karbu, dan
+                                setting standar untuk kenyamanan harian.</p>
+                            <h4 class="text-red mb-0">Harga menyesuaikan</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card card-katalog text-center">
+                        <div class="card-body">
+                            <h3 class="fw-bold mb-3">Modifikasi / Remap</h3>
+                            <p class="text-secondary mb-4">Remap ECU, ubah noken as, bore up harian, porting polish,
+                                hingga modifikasi CVT/Gear ratio.</p>
+                            <h4 class="text-red mb-0">Mulai Rp 100rb</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card card-katalog text-center">
+                        <div class="card-body">
+                            <h3 class="fw-bold mb-3">Bongkar Total</h3>
+                            <p class="text-secondary mb-4">Turun mesin, restorasi total, atau bangun mesin spek balap /
+                                kompetisi dari nol.</p>
+                            <h4 class="text-red mb-0">Harga meneysuaikan</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="kontak" class="contact-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <h2 class="fw-bold mb-4">Kunjungi Bengkel Kami</h2>
+                    <ul class="list-unstyled text-secondary">
+                        <li class="mb-3">📍 <strong>Alamat:</strong> Desa Kuala Gading, Batang Cenaku, Indragiri Hulu,
+                            Riau</li>
+                        <li class="mb-3">📞 <strong>WhatsApp:</strong> 0812-XXXX-XXXX</li>
+                        <li class="mb-3">🕒 <strong>Jam Buka:</strong> Senin - Sabtu (09:00 - 20:00)</li>
+                        <li>❌ <strong>Minggu:</strong> Tutup / Sesuai Janji</li>
+                    </ul>
+                    <a href="https://wa.me/6281200000000" target="_blank" class="btn btn-outline-red mt-3">Chat
+                        WhatsApp</a>
+                </div>
+                <div class="col-lg-6">
+                    <div class="bg-dark rounded p-4 text-center border border-secondary"
+                        style="height: 250px; display: flex; align-items: center; justify-content: center;">
+                        <div class="rounded overflow-hidden border border-secondary" style="height: 250px;">
+                           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4966.196662875392!2d102.26104637586378!3d-0.6254781993684104!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e29774212dcf28b%3A0x503c233fd74546a2!2sRR%20racing!5e1!3m2!1sid!2sid!4v1787983007414!5m2!1sid!2sid" 
+                           width="600" 
+                           height="450" 
+                           style="border:0;" 
+                           allowfullscreen="" 
+                           loading="lazy" 
+                           referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p class="text-secondary mb-0">&copy; 2026 FDN Performance Tuner. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
